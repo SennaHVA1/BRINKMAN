@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brinkman Installatie &amp; Loodgietersbedrijf | Loodgieter Purmerend e.o.</title>
+<meta name="description" content="Installatie, loodgieter, onderhoud en restauratie in Purmerend en omgeving. Utiliteit, legionellabeheer en monumentaal lood-, zink- en koperwerk.">
+<meta property="og:title" content="Brinkman Installatie &amp; Loodgietersbedrijf | Loodgieter Purmerend e.o.">
+<meta property="og:description" content="Installatie, loodgieter, onderhoud en restauratie in Purmerend en omgeving.">
+<meta property="og:type" content="website">
+<style>
+  /* ============ THEME (locked, light, single patina accent) ============ */
+  :root{
+    --bg:        #f5f4f0;
+    --bg-alt:    #ecebe4;
+    --ink:       #1f201c;
+    --muted:     #5a5b53;
+    --line:      #d6d4cb;
+    --accent:    #46564f;
+    --accent-dk: #36433d;
+    --dark:      #23241f;
+    --dark-mut:  #b6b6aa;
+    --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    --sans: -apple-system, "Segoe UI", system-ui, Roboto, Helvetica, Arial, sans-serif;
+    --banner-h: 34px;
+    --nav-h: 66px;
+  }
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;
+    scroll-padding-top: calc(var(--banner-h) + var(--nav-h) + 8px);
+    -webkit-text-size-adjust:100%;
+  }
+  body{
+    margin:0; font-family:var(--sans); color:var(--ink); background:var(--bg);
+    line-height:1.6; font-size:clamp(1rem,0.97rem + 0.2vw,1.075rem);
+    padding-top: calc(var(--banner-h) + var(--nav-h));
+  }
+  h1,h2,h3{font-family:var(--serif); font-weight:400; line-height:1.1; letter-spacing:-0.01em; margin:0;}
+  p{margin:0 0 1rem;}
+  a{color:inherit;}
+  img{display:block; max-width:100%;}
+  .wrap{max-width:1180px; margin-inline:auto; padding-inline:clamp(1.25rem,4vw,3.5rem);}
+  section{padding-block:clamp(3.5rem,7vw,7rem);}
+  .body-col{max-width:54ch; color:var(--muted);}
+  .eyebrow{font-size:.74rem; text-transform:uppercase; letter-spacing:.2em; color:var(--accent); margin:0 0 1.1rem;}
+
+  /* ============ DEMO BANNER ============ */
+  .banner{
+    position:fixed; top:0; left:0; right:0; z-index:120; height:var(--banner-h);
+    background:var(--dark); color:#e9e8e0; display:flex; align-items:center; justify-content:center;
+    font-size:clamp(.66rem,.6rem + .25vw,.78rem); letter-spacing:.02em;
+    text-decoration:none; white-space:nowrap; padding-inline:.75rem; overflow:hidden;
+  }
+  .banner:hover{color:#fff;}
+  .banner u{text-decoration:underline; text-underline-offset:2px; margin-left:.35ch;}
+
+  /* ============ NAV ============ */
+  header.nav{
+    position:fixed; top:var(--banner-h); left:0; right:0; z-index:110; height:var(--nav-h);
+    background:rgba(245,244,240,.92); backdrop-filter:saturate(140%) blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{height:100%; display:flex; align-items:center; justify-content:space-between; gap:1rem;}
+  .brand{display:flex; align-items:center; gap:.7rem; text-decoration:none; color:var(--ink); min-height:44px;}
+  .brand img{height:38px; width:auto;}
+  .brand .bt{display:flex; flex-direction:column; line-height:1.05;}
+  .brand .bt b{font-family:var(--serif); font-weight:400; font-size:1.15rem; letter-spacing:.01em;}
+  .brand .bt span{font-size:.62rem; text-transform:uppercase; letter-spacing:.18em; color:var(--muted);}
+  nav ul{list-style:none; display:flex; align-items:center; gap:clamp(1rem,2.2vw,2.1rem); margin:0; padding:0;}
+  nav a{text-decoration:none; color:var(--ink); font-size:.92rem; display:inline-flex; align-items:center; min-height:44px; border-bottom:1.5px solid transparent; transition:border-color .2s,color .2s;}
+  nav a:hover{color:var(--accent); border-color:var(--accent);}
+  nav a.cta{background:var(--accent); color:#f3f2ec; padding:0 1.2rem; min-height:44px; border:1.5px solid var(--accent); transition:background .2s,border-color .2s;}
+  nav a.cta:hover{background:var(--accent-dk); border-color:var(--accent-dk); color:#fff;}
+  .hamb{display:none; background:none; border:0; cursor:pointer; width:44px; height:44px; padding:10px; align-items:center; justify-content:center;}
+  .hamb span{display:block; width:24px; height:2px; background:var(--ink); position:relative; transition:transform .25s,opacity .25s;}
+  .hamb span::before,.hamb span::after{content:""; position:absolute; left:0; width:24px; height:2px; background:var(--ink); transition:transform .25s;}
+  .hamb span::before{top:-7px;} .hamb span::after{top:7px;}
+  .hamb[aria-expanded="true"] span{background:transparent;}
+  .hamb[aria-expanded="true"] span::before{transform:translateY(7px) rotate(45deg);}
+  .hamb[aria-expanded="true"] span::after{transform:translateY(-7px) rotate(-45deg);}
+
+  /* ============ BUTTONS ============ */
+  .btn{display:inline-flex; align-items:center; gap:.6ch; min-height:48px; padding:0 1.6rem; background:var(--accent); color:#f3f2ec; text-decoration:none; font-size:.96rem; border:1.5px solid var(--accent); transition:background .2s,border-color .2s,transform .15s; letter-spacing:.01em;}
+  .btn:hover{background:var(--accent-dk); border-color:var(--accent-dk); color:#fff;}
+  .btn:active{transform:translateY(1px);}
+  .btn.light{background:#f3f2ec; color:var(--ink); border-color:#f3f2ec;}
+  .btn.light:hover{background:#fff; border-color:#fff;}
+  .arr{transition:transform .2s;}
+  .btn:hover .arr{transform:translateX(3px);}
+
+  /* ============ HERO ============ */
+  .hero{position:relative; min-height:calc(100dvh - var(--banner-h) - var(--nav-h)); display:flex; align-items:flex-end; overflow:hidden; background:var(--dark); color:#f4f3ee;}
+  .hero-bg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center center; z-index:0; transform:scale(1.02); animation:kenburns 26s ease-in-out infinite alternate;}
+  @keyframes kenburns{from{transform:scale(1.02) translateY(0);} to{transform:scale(1.12) translateY(-1.5%);}}
+  .hero::after{content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(20,21,17,.32) 0%, rgba(20,21,17,.16) 38%, rgba(20,21,17,.84) 100%);}
+  .hero .wrap{position:relative; z-index:2; width:100%; padding-block:clamp(2.5rem,6vw,4.5rem) clamp(2.75rem,6vw,4.5rem);}
+  .hero .eyebrow{color:#cfd6cf;}
+  .hero h1{font-size:clamp(2.05rem,1.3rem + 3.5vw,3.3rem); max-width:18ch; color:#fdfdfb; margin-bottom:1.1rem; text-shadow:0 1px 18px rgba(0,0,0,.28);}
+  .hero p.sub{max-width:46ch; font-size:clamp(1.02rem,.98rem + .3vw,1.18rem); color:#e9e7df; margin-bottom:1.9rem;}
+
+  /* ============ OVER ONS (asymmetric two-column) ============ */
+  .about-grid{display:grid; grid-template-columns:1fr; gap:clamp(2rem,5vw,4rem); align-items:center;}
+  .about-fig{position:relative; overflow:hidden; border:1px solid var(--line);}
+  .about-fig img{width:100%; height:100%; object-fit:cover; aspect-ratio:4/5; transition:transform .9s cubic-bezier(.16,1,.3,1);}
+  .about-fig:hover img{transform:scale(1.04);}
+  .about-fig figcaption{position:absolute; left:0; bottom:0; background:var(--dark); color:#f1f0e8; font-size:.8rem; padding:.55rem .9rem;}
+  .about-copy h2{font-size:clamp(1.9rem,1.3rem + 2vw,2.8rem); margin-bottom:1.3rem; max-width:16ch;}
+  .vow{margin-top:1.5rem; padding-top:1.3rem; border-top:1px solid var(--line); font-family:var(--serif); font-style:italic; font-size:1.18rem; color:var(--ink); max-width:38ch; line-height:1.4;}
+  .tags{display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.6rem;}
+  .tags span{font-size:.78rem; letter-spacing:.04em; color:var(--accent); border:1px solid var(--accent); padding:.4rem .8rem;}
+
+  /* ============ SECTION HEADS ============ */
+  .sec-head{max-width:42ch; margin-bottom:clamp(2.25rem,5vw,3.5rem);}
+  .sec-head h2{font-size:clamp(1.9rem,1.3rem + 2vw,2.85rem); margin-bottom:.9rem;}
+  .sec-head p{color:var(--muted); margin:0;}
+
+  /* ============ DIENSTEN (consistente rijen: media links, tekst rechts) ============ */
+  .service{display:grid; grid-template-columns:1fr; gap:clamp(1.5rem,4vw,3rem); align-items:center; padding-top:clamp(2.25rem,5vw,3.75rem); margin-top:clamp(2.25rem,5vw,3.75rem); border-top:1px solid var(--line);}
+  .svc-num{font-family:var(--serif); font-size:.95rem; color:var(--accent); letter-spacing:.04em; margin-bottom:.55rem;}
+  .service h3{font-size:clamp(1.5rem,1.2rem + 1.2vw,2.05rem); margin-bottom:1rem;}
+  .disc{list-style:none; margin:1.4rem 0 0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:0 1.6rem;}
+  .disc li{padding:.55rem 0; border-bottom:1px solid var(--line); font-size:.92rem; color:var(--ink);}
+  .ph-photo{aspect-ratio:16/11; border:1px solid var(--line); overflow:hidden; margin:0; background:#d2d0c5;}
+  .ph-photo img{width:100%; height:100%; object-fit:cover; transition:transform .9s cubic-bezier(.16,1,.3,1);}
+  .ph-photo:hover img{transform:scale(1.04);}
+  /* legionella als rustig, licht detailkaartje (in plaats van groen vlak) */
+  .detail-card{border:1px solid var(--line); background:#fff; padding:clamp(1.6rem,3.5vw,2.4rem); aspect-ratio:16/11; display:flex; flex-direction:column; justify-content:center;}
+  .detail-card h4{font-family:var(--serif); font-weight:400; font-size:1.45rem; margin:0 0 .6rem;}
+  .detail-card .dc-lede{font-size:.92rem; color:var(--muted); margin:0 0 1.1rem; max-width:38ch;}
+  .detail-card dl{margin:0; display:grid; gap:0;}
+  .detail-card dl > div{padding:.85rem 0; border-top:1px solid var(--line);}
+  .detail-card dt{font-weight:600; font-size:.93rem; color:var(--ink);}
+  .detail-card dd{margin:.2rem 0 0; font-size:.9rem; color:var(--muted);}
+
+  /* ============ OPDRACHTGEVERS (logo carousel) ============ */
+  .clients{background:var(--bg-alt);}
+  .clients .lab{font-size:.78rem; text-transform:uppercase; letter-spacing:.2em; color:var(--accent); margin:0 0 2rem;}
+  .marquee{position:relative; overflow:hidden; border-block:1px solid var(--line); -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+  .marquee-track{display:flex; width:max-content; animation:marq 40s linear infinite;}
+  @keyframes marq{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+  .slide{flex:0 0 auto; display:flex; align-items:center; justify-content:center; height:92px; margin-inline:clamp(1.5rem,3.5vw,3rem);}
+  /* zelfde hoogte voor elk logo; de breedte volgt automatisch de aspect ratio */
+  .logo,.logo-img{display:block; width:auto; height:34px; max-width:none; transition:filter .25s, color .25s, opacity .25s, transform .25s;}
+  .logo{color:var(--muted);}
+  .logo:hover{color:var(--ink); transform:translateY(-2px);}
+  .logo text{font-family:var(--sans);}
+  .logo-img{object-fit:contain; filter:grayscale(1); opacity:.62;}
+  .logo-img:hover{filter:none; opacity:1; transform:translateY(-2px);}
+  /* eyckenstein heeft veel witruimte in het bestand: individuele correctie */
+  .logo-img.eyck{height:74px;}
+
+  /* ============ WERKWIJZE (numbered list) ============ */
+  .steps{display:grid; grid-template-columns:1fr; gap:0; margin-top:clamp(1.5rem,3vw,2.5rem); border-top:1px solid var(--line);}
+  .step{display:grid; grid-template-columns:auto 1fr; gap:clamp(1rem,3vw,2.4rem); padding:1.4rem 0; border-bottom:1px solid var(--line); align-items:baseline; transition:padding-left .25s;}
+  .step:hover{padding-left:.6rem;}
+  .step .n{font-family:var(--serif); font-size:1.6rem; color:var(--accent); min-width:2.4ch;}
+  .step h3{font-size:1.18rem; margin-bottom:.25rem;}
+  .step p{margin:0; color:var(--muted); max-width:56ch; font-size:.93rem;}
+
+  /* ============ REVIEWS ============ */
+  .reviews{background:var(--bg-alt); overflow:hidden;}
+  .reviews-head{display:flex; align-items:flex-end; justify-content:space-between; gap:1.5rem; margin-bottom:clamp(1.75rem,4vw,2.75rem);}
+  .reviews-head h2{font-size:clamp(1.9rem,1.3rem + 2vw,2.85rem);}
+  .rev-nav{display:flex; gap:.6rem; flex:0 0 auto;}
+  .rev-arrow{width:48px; height:48px; border:1.5px solid var(--line); background:transparent; color:var(--ink); font-size:1.15rem; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; transition:background .2s,border-color .2s,color .2s;}
+  .rev-arrow:hover{background:var(--accent); border-color:var(--accent); color:#f3f2ec;}
+  .stars{display:flex; gap:4px; margin-bottom:1.1rem;}
+  .stars svg{width:18px; height:18px; fill:var(--accent);}
+  .rev-scroller{overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:none; scroll-padding-left:clamp(1.25rem,4vw,3.5rem); -webkit-mask-image:linear-gradient(90deg,#000 88%,transparent); mask-image:linear-gradient(90deg,#000 88%,transparent);}
+  .rev-scroller::-webkit-scrollbar{display:none;}
+  .rev-track{display:flex; gap:clamp(1rem,2.5vw,1.5rem); padding-inline:clamp(1.25rem,4vw,3.5rem); padding-block:.25rem 1rem;}
+  .rev-card{flex:0 0 auto; width:clamp(228px,76vw,360px); scroll-snap-align:start; background:var(--bg); border:1px solid var(--line); border-top:3px solid var(--accent); padding:1.7rem 1.5rem; display:flex; flex-direction:column;}
+  .rev-card p{font-family:var(--serif); font-size:1.1rem; line-height:1.4; color:var(--ink); margin:0 0 1.2rem; flex:1 0 auto;}
+  .rev-card cite{font-style:normal; font-size:.88rem; color:var(--muted);}
+
+  /* ============ WERKBUS BAND (getinte band met rand, foto links) ============ */
+  .van-band{background:var(--bg-alt); border-block:1px solid var(--line);}
+  .van-band-inner{display:grid; grid-template-columns:1fr; gap:clamp(1.75rem,4vw,3.5rem); align-items:center;}
+  .van-fig{margin:0; border:1px solid var(--line); overflow:hidden;}
+  .van-fig img{width:100%; height:auto; display:block; transition:transform .9s cubic-bezier(.16,1,.3,1);}
+  .van-fig:hover img{transform:scale(1.04);}
+  .van-text h2{font-size:clamp(1.7rem,1.2rem + 1.6vw,2.4rem); margin-bottom:1rem;}
+  .van-text p{color:var(--muted); max-width:42ch; margin:0;}
+
+  /* ============ CONTACT (split: details / satellite map) ============ */
+  .contact-grid{display:grid; grid-template-columns:1fr; gap:clamp(2rem,5vw,4rem); align-items:stretch;}
+  .contact-info h2{font-size:clamp(1.9rem,1.3rem + 2vw,2.85rem); margin-bottom:1.1rem; max-width:14ch;}
+  .contact-info .body-col{margin-bottom:1.6rem;}
+  .cinfo{list-style:none; margin:0 0 1.9rem; padding:0; display:grid; gap:1rem;}
+  .cinfo li{display:grid; gap:.15rem; border-bottom:1px solid var(--line); padding-bottom:1rem;}
+  .cinfo .k{font-size:.74rem; text-transform:uppercase; letter-spacing:.16em; color:var(--accent);}
+  .cinfo .v{font-size:1.08rem;}
+  .cinfo a{color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line); transition:border-color .2s;}
+  .cinfo a:hover{border-color:var(--accent);}
+  .map-wrap{position:relative; min-height:20rem; height:100%; border:1px solid var(--line); overflow:hidden; background:#d2d0c5;}
+  .map-wrap iframe{position:absolute; inset:0; width:100%; height:100%; border:0; filter:grayscale(.12) contrast(1.02);}
+  .map-pin{position:absolute; left:0; bottom:0; z-index:2; background:var(--dark); color:#f1f0e8; font-size:.82rem; padding:.55rem .9rem;}
+
+  /* ============ FOOTER ============ */
+  footer{background:var(--dark); color:var(--dark-mut); padding-block:clamp(2.75rem,6vw,4rem) 2rem;}
+  footer .f-top{display:grid; grid-template-columns:1fr; gap:1.6rem; padding-bottom:2rem; border-bottom:1px solid rgba(255,255,255,.12);}
+  footer .brand .bt b{color:#f1f0e8;}
+  footer .brand .bt span{color:var(--dark-mut);}
+  footer .brand img{background:#fff; padding:7px 10px; opacity:1;}
+  footer address{font-style:normal; font-size:.92rem; line-height:1.7;}
+  footer a{color:#e3e2d9; text-decoration:none; border-bottom:1px solid rgba(255,255,255,.18);}
+  footer a:hover{border-color:#fff; color:#fff;}
+  footer .f-bot{display:flex; flex-wrap:wrap; gap:.4rem 1.5rem; justify-content:space-between; padding-top:1.6rem; font-size:.8rem;}
+
+  /* ============ SCROLL REVEAL ============ */
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s cubic-bezier(.16,1,.3,1);}
+  .reveal.is-visible{opacity:1; transform:none;}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:860px){
+    nav ul{position:fixed; top:calc(var(--banner-h) + var(--nav-h)); left:0; right:0; flex-direction:column; align-items:stretch; gap:0; background:var(--bg); border-bottom:1px solid var(--line); padding:.5rem clamp(1.25rem,4vw,3.5rem) 1.25rem; transform:translateY(-130%); transition:transform .3s ease; box-shadow:0 16px 24px -18px rgba(0,0,0,.4);}
+    nav ul.open{transform:translateY(0);}
+    nav li{border-bottom:1px solid var(--line);}
+    nav a{width:100%; min-height:52px; border-bottom:0;}
+    nav a.cta{justify-content:center; margin-top:.85rem; min-height:52px;}
+    .hamb{display:inline-flex;}
+  }
+  @media (min-width:760px){
+    .about-grid{grid-template-columns:0.82fr 1.18fr;}
+    .van-band-inner{grid-template-columns:1.1fr .9fr;}
+    .service{grid-template-columns:1fr 1fr; gap:clamp(2rem,4vw,3.5rem);}
+    .contact-grid{grid-template-columns:1fr 1fr;}
+    footer .f-top{grid-template-columns:1.3fr 1fr 1fr;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1; transform:none; transition:none;}
+    .hero-bg{animation:none; transform:none;}
+    .marquee-track{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- DEMO BANNER -->
+<a class="banner" href="https://brand-on.org" target="_blank" rel="noopener">Demovoorbeeld gemaakt door Brand-On,<u>brand-on.org</u></a>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="Brinkman, naar boven">
+      <img src="logo.png" alt="Brinkman logo">
+      <span class="bt"><b>Brinkman</b><span>Installatie &amp; Loodgietersbedrijf</span></span>
+    </a>
+    <nav>
+      <button class="hamb" aria-label="Menu openen" aria-expanded="false" aria-controls="menu"><span></span></button>
+      <ul id="menu">
+        <li><a href="#over">Over ons</a></li>
+        <li><a href="#diensten">Diensten</a></li>
+        <li><a href="#opdrachtgevers">Opdrachtgevers</a></li>
+        <li><a href="#werkwijze">Werkwijze</a></li>
+        <li><a class="cta" href="#contact">Neem contact op</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Introductie">
+    <img class="hero-bg" src="hero%20banner.avif" alt="">
+    <div class="wrap">
+      <p class="eyebrow">Brinkman Installatie &amp; Loodgietersbedrijf</p>
+      <h1>Installatie, loodgieten en restauratie in Purmerend en omgeving.</h1>
+      <p class="sub">Van utiliteit tot monumentaal lood, zink en koper. Strak gepland, netjes opgeleverd.</p>
+      <a class="btn light" href="#contact">Neem contact op <span class="arr">&rarr;</span></a>
+    </div>
+  </section>
+
+  <!-- OVER ONS -->
+  <section id="over">
+    <div class="wrap about-grid">
+      <figure class="about-fig reveal">
+        <img src="foto_van_jort.png" alt="Jort Brinkman, contactpersoon bij Brinkman Installatie en Loodgietersbedrijf">
+        <figcaption>Jort Brinkman</figcaption>
+      </figure>
+      <div class="about-copy reveal">
+        <h2>Klein bedrijf, groot vakmanschap.</h2>
+        <p class="body-col">Al jaren actief in Noord-Holland, met korte lijnen en een vaste contactpersoon. U spreekt de mensen die het werk ook echt uitvoeren, van begroting tot oplevering.</p>
+        <p class="vow">Samenwerking op vertrouwen, opgebouwd op werk dat blijft staan.</p>
+        <div class="tags">
+          <span>Platte organisatie</span>
+          <span>RAL gecertificeerd</span>
+          <span>Monumentwaardig werk</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WERKBUS BAND -->
+  <section class="van-band" aria-label="Onderweg in de regio">
+    <div class="wrap van-band-inner">
+      <figure class="van-fig reveal">
+        <img src="werkbus_in_dorp.png" alt="Werkbus van Brinkman in het dorp">
+      </figure>
+      <div class="van-text reveal">
+        <h2>Altijd dichtbij.</h2>
+        <p>Eigen mensen en een eigen bus, met korte aanrijtijden in Purmerend en omgeving. Of het nu om gepland onderhoud of een spoedklus gaat, we staan snel voor u klaar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIENSTEN -->
+  <section id="diensten">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>Drie soorten werk, onder één dak.</h2>
+        <p>Installatie in de utiliteit, onderhoud met legionellabeheer, en monumentale restauratie.</p>
+      </div>
+
+      <div class="service reveal" id="s-utiliteit">
+        <figure class="ph-photo"><img src="installatiewerk.avif" alt="Installatiewerk door Brinkman in de utiliteit"></figure>
+        <div class="service-body">
+          <p class="svc-num">01</p>
+          <h3>Utiliteit</h3>
+          <p class="body-col">Complete installaties voor kantoren, zorg en bedrijfspanden. Van ontwerp tot oplevering in een doorlopende lijn.</p>
+          <ul class="disc">
+            <li>Water</li>
+            <li>Gas</li>
+            <li>Sanitair</li>
+            <li>Riolering</li>
+            <li>Hemelwater</li>
+            <li>Pompinstallaties</li>
+            <li>Brandblusmiddelen</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service reveal" id="s-onderhoud">
+        <div class="detail-card">
+          <h4>Legionellabeheer</h4>
+          <p class="dc-lede">Beheersing op basis van een vast plan, vastgelegd en aantoonbaar.</p>
+          <dl>
+            <div><dt>RAL gecertificeerd</dt><dd>Monstername en beheersing door erkende uitvoering.</dd></div>
+            <div><dt>Beheersplan</dt><dd>Per locatie een actueel plan met logboek en rapportage.</dd></div>
+          </dl>
+        </div>
+        <div class="service-body">
+          <p class="svc-num">02</p>
+          <h3>Onderhoud en legionellabeheer</h3>
+          <p class="body-col">Klein en groot onderhoud, gepland of op afroep. We kennen de panden waar we werken en zijn storingen liever voor dan dat we ze achteraf oplossen.</p>
+        </div>
+      </div>
+
+      <div class="service reveal" id="s-restauratie">
+        <figure class="ph-photo"><img src="zinkkoper.png" alt="Restauratie van lood, zink en koper aan een monument"></figure>
+        <div class="service-body">
+          <p class="svc-num">03</p>
+          <h3>Restauratie</h3>
+          <p class="body-col">Monumentaal lood-, zink- en koperwerk aan kerktorens, landhuizen en monumenten. Met respect voor het origineel en een planning die u van nieuwbouw verwacht.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPDRACHTGEVERS (logo carousel) -->
+  <section id="opdrachtgevers" class="clients">
+    <div class="wrap reveal">
+      <p class="lab">Een selectie van opdrachtgevers</p>
+    </div>
+    <!-- Echte merklogo's waar aangeleverd; de twee kerken als gestileerd embleem (geen logobestand beschikbaar). Set wordt in JS verdubbeld voor naadloze loop. -->
+    <div class="marquee" aria-label="Opdrachtgevers">
+      <div class="marquee-track" id="logoTrack">
+        <div class="slide"><img class="logo-img eyck" src="eyckenstein.png" alt="Landgoed Eyckenstein"></div>
+        <div class="slide"><img class="logo-img" src="kpmg.png" alt="KPMG"></div>
+        <div class="slide">
+          <!-- Oude Jeroenskerk (gestileerd embleem, een regel) -->
+          <svg class="logo" viewBox="0 0 252 40" role="img" aria-label="Oude Jeroenskerk"><path d="M16 5 V10 M13 7.5 H19 M8 32 V18 L16 11 L24 18 V32 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><text x="34" y="29" font-family="Georgia,serif" font-size="23" fill="currentColor">Oude Jeroenskerk</text></svg>
+        </div>
+        <div class="slide"><img class="logo-img" src="noordzuidlijn.jpg" alt="Noord/Zuidlijn"></div>
+        <div class="slide"><img class="logo-img" src="heinekenlogo.png" alt="Heineken"></div>
+        <div class="slide">
+          <!-- Waalse Kerk (gestileerd embleem, een regel) -->
+          <svg class="logo" viewBox="0 0 196 40" role="img" aria-label="Waalse Kerk"><path d="M8 32 V17 Q16 6 24 17 V32 Z" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="16" y1="12" x2="16" y2="32" stroke="currentColor" stroke-width="1.2"/><line x1="10" y1="22" x2="22" y2="22" stroke="currentColor" stroke-width="1.2"/><text x="34" y="29" font-family="Georgia,serif" font-size="23" fill="currentColor">Waalse Kerk</text></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WERKWIJZE -->
+  <section id="werkwijze">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>Hoe we werken.</h2>
+        <p>Geen verrassingen, van eerste begroting tot oplevering.</p>
+      </div>
+      <div class="steps reveal">
+        <div class="step"><span class="n">01</span><div><h3>Platte organisatie</h3><p>Korte lijnen en een vaste contactpersoon.</p></div></div>
+        <div class="step"><span class="n">02</span><div><h3>Strakke planning</h3><p>Een realistische planning die we nakomen.</p></div></div>
+        <div class="step"><span class="n">03</span><div><h3>Nauwsluitende begroting</h3><p>Vooraf helder wat het kost, zonder verrassingen achteraf.</p></div></div>
+        <div class="step"><span class="n">04</span><div><h3>Intensief contact</h3><p>Van advies tot oplevering blijft u op de hoogte.</p></div></div>
+        <div class="step"><span class="n">05</span><div><h3>Heldere verslaglegging</h3><p>Vastgelegd wat er is gedaan, zodat beheer aantoonbaar blijft.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" aria-label="Wat opdrachtgevers zeggen">
+    <div class="wrap">
+      <div class="reviews-head reveal">
+        <h2>Wat opdrachtgevers zeggen.</h2>
+        <div class="rev-nav">
+          <button class="rev-arrow" type="button" data-dir="-1" aria-label="Vorige review">&larr;</button>
+          <button class="rev-arrow" type="button" data-dir="1" aria-label="Volgende review">&rarr;</button>
+        </div>
+      </div>
+    </div>
+    <div class="rev-scroller reveal" id="revScroller" tabindex="0" aria-label="Reviews, horizontaal scrollbaar">
+      <div class="rev-track">
+        <figure class="rev-card">
+          <div class="stars" aria-label="5 van 5 sterren"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg></div>
+          <p>&ldquo;Het lood- en zinkwerk aan onze kerktoren vakkundig en met respect voor het monument hersteld. Strakke planning, netjes opgeleverd.&rdquo;</p>
+          <cite>Beheerder, Oude Jeroenskerk</cite>
+        </figure>
+        <figure class="rev-card">
+          <div class="stars" aria-label="5 van 5 sterren"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg></div>
+          <p>&ldquo;Snel geschakeld, duidelijke begroting en uitstekend uitgevoerd onderhoud. Een betrouwbare partner.&rdquo;</p>
+          <cite>Facilitair manager, KPMG</cite>
+        </figure>
+        <figure class="rev-card">
+          <div class="stars" aria-label="5 van 5 sterren"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg></div>
+          <p>&ldquo;Van advies tot oplevering intensief contact. De installaties op het landgoed draaien perfect.&rdquo;</p>
+          <cite>Rentmeester, Landgoed Eyckenstein</cite>
+        </figure>
+        <figure class="rev-card">
+          <div class="stars" aria-label="5 van 5 sterren"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg></div>
+          <p>&ldquo;Werk in een complexe omgeving, strak gepland en zonder verrassingen. Goede afstemming met alle partijen.&rdquo;</p>
+          <cite>Projectleider, Noord/Zuidlijn</cite>
+        </figure>
+        <figure class="rev-card">
+          <div class="stars" aria-label="5 van 5 sterren"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg></div>
+          <p>&ldquo;Onderhoud netjes uitgevoerd binnen de afgesproken tijd, met heldere rapportage achteraf.&rdquo;</p>
+          <cite>Technisch co&ouml;rdinator, Heineken</cite>
+        </figure>
+        <figure class="rev-card">
+          <div class="stars" aria-label="5 van 5 sterren"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg></div>
+          <p>&ldquo;Met zorg en kennis van zaken aan ons monument gewerkt. Vakmensen die meedenken.&rdquo;</p>
+          <cite>Kerkrentmeester, Waalse Kerk</cite>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-info reveal">
+        <h2>Even bellen of mailen?</h2>
+        <p class="body-col">Bel of mail Jort. We kijken mee, begroten nauwsluitend en plannen het werk in zonder gedoe.</p>
+        <ul class="cinfo">
+          <li><span class="k">Telefoon</span><span class="v"><a href="tel:+31207601550">020 760 1550</a></span></li>
+          <li><span class="k">E-mail</span><span class="v"><a href="mailto:info@brinkmanloodgieters.nl">info@brinkmanloodgieters.nl</a></span></li>
+          <li><span class="k">Adres</span><span class="v">Purmerland 96, 1451 MJ Purmerland</span></li>
+          <li><span class="k">Contactpersoon</span><span class="v">Jort Brinkman</span></li>
+        </ul>
+        <a class="btn" href="tel:+31207601550">Bel 020 760 1550</a>
+      </div>
+      <div class="map-wrap reveal">
+        <iframe title="Satellietkaart Purmerland 96, 1451 MJ Purmerland" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen
+          src="https://maps.google.com/maps?q=Purmerland%2096%2C%201451%20MJ%20Purmerland&t=k&z=16&output=embed"></iframe>
+        <span class="map-pin">Purmerland 96, 1451 MJ Purmerland</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <a class="brand" href="#top">
+        <img src="logo.png" alt="Brinkman logo">
+        <span class="bt"><b>Brinkman</b><span>Installatie &amp; Loodgietersbedrijf</span></span>
+      </a>
+      <address>
+        Purmerland 96<br>
+        1451 MJ Purmerland<br>
+        <a href="tel:+31207601550">020 760 1550</a><br>
+        <a href="mailto:info@brinkmanloodgieters.nl">info@brinkmanloodgieters.nl</a>
+      </address>
+      <address>
+        Utiliteit<br>
+        Onderhoud en legionellabeheer<br>
+        Restauratie lood, zink en koper<br>
+        KVK 99582627
+      </address>
+    </div>
+    <div class="f-bot">
+      <span>Brinkman Installatie &amp; Loodgietersbedrijf BV, Purmerend en omgeving.</span>
+      <span><a href="https://brand-on.org" target="_blank" rel="noopener">Demovoorbeeld gemaakt door Brand-On, brand-on.org</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* Hamburger toggle */
+  (function(){
+    var btn = document.querySelector('.hamb');
+    var menu = document.getElementById('menu');
+    if(btn && menu){
+      btn.addEventListener('click', function(){
+        var open = menu.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+      });
+      menu.addEventListener('click', function(e){
+        if(e.target.tagName === 'A'){
+          menu.classList.remove('open');
+          btn.setAttribute('aria-expanded','false');
+          btn.setAttribute('aria-label','Menu openen');
+        }
+      });
+    }
+  })();
+
+  /* Duplicate logo set for a seamless marquee loop.
+     Doubling keeps an even number of identical sets, so translateX(-50%)
+     always lands exactly on a copy (no jump). Keep doubling until the track
+     is wide enough to cover wide screens without revealing a gap. */
+  (function(){
+    var track = document.getElementById('logoTrack');
+    if(!track) return;
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    track.innerHTML += track.innerHTML;
+    var guard = 0;
+    while(track.scrollWidth < window.innerWidth * 2.2 && guard < 4){
+      track.innerHTML += track.innerHTML;
+      guard++;
+    }
+  })();
+
+  /* Reviews carousel arrows: scroll by one card width */
+  (function(){
+    var scroller = document.getElementById('revScroller');
+    if(!scroller) return;
+    var arrows = document.querySelectorAll('.rev-arrow');
+    arrows.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var card = scroller.querySelector('.rev-card');
+        var step = card ? card.getBoundingClientRect().width + 16 : 320;
+        scroller.scrollBy({ left: step * parseInt(btn.getAttribute('data-dir'), 10), behavior: 'smooth' });
+      });
+    });
+  })();
+
+  /* Scroll reveal via IntersectionObserver (no scroll listeners) */
+  (function(){
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var els = document.querySelectorAll('.reveal');
+    if(reduce || !('IntersectionObserver' in window)){
+      els.forEach(function(el){ el.classList.add('is-visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('is-visible'); io.unobserve(en.target); }
+      });
+    }, {threshold:0.15, rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){ io.observe(el); });
+  })();
+</script>
+</body>
+</html>
