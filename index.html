@@ -8,22 +8,41 @@
 <meta property="og:title" content="Brinkman Installatie &amp; Loodgietersbedrijf | Loodgieter Purmerend e.o.">
 <meta property="og:description" content="Installatie, loodgieter, onderhoud en restauratie in Purmerend en omgeving.">
 <meta property="og:type" content="website">
+
+<!-- Heritage display serif (Cormorant Garamond) for headlines only; body stays on a
+     clean system sans for B2B legibility. Loaded via Google Fonts with preconnect +
+     display=swap. Swap to self-hosted woff2 later if an offline/zero-3rd-party build is wanted. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+
 <style>
-  /* ============ THEME (locked, light, single patina accent) ============ */
+  /* ============================================================
+     THEME  -  light-locked heritage editorial, deep-contrast overhaul.
+     Cream base kept. Dark surfaces cooled + deepened to a charcoal-green
+     so the brand finally has real depth against the paper.
+     Single brand accent (sage/patina green, preserved + LOCKED).
+     One shape system: sharp (radius 0), architectural.
+     ============================================================ */
   :root{
-    --bg:        #f5f4f0;
-    --bg-alt:    #ecebe4;
-    --ink:       #1f201c;
-    --muted:     #5a5b53;
-    --line:      #d6d4cb;
-    --accent:    #46564f;
+    --bg:        #f4f2ec;   /* warm paper (kept) */
+    --bg-2:      #eae6db;   /* tinted band */
+    --ink:       #1a1c19;   /* near-black, faintly cooled */
+    --muted:     #585a51;
+    --line:      #cdcabe;   /* crisper hairline */
+    --line-2:    #b8b5a7;   /* stronger divider */
+    --accent:    #46564f;   /* LOCKED brand accent */
     --accent-dk: #36433d;
-    --dark:      #23241f;
-    --dark-mut:  #b6b6aa;
-    --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    --accent-lt: #7f9388;   /* lighter sage, for on-dark eyebrows/details */
+    --dark:      #14181a;   /* deep cooled charcoal-green surface */
+    --dark-2:    #0e1113;   /* deepest */
+    --on-dark:   #eef0ea;
+    --on-dark-mut:#a9ada2;
+    --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
     --sans: -apple-system, "Segoe UI", system-ui, Roboto, Helvetica, Arial, sans-serif;
     --banner-h: 34px;
-    --nav-h: 70px;
+    --nav-h: 72px;
+    --maxw: 1220px;
   }
   *{box-sizing:border-box;}
   html{
@@ -33,47 +52,65 @@
   }
   body{
     margin:0; font-family:var(--sans); color:var(--ink); background:var(--bg);
-    line-height:1.6; font-size:clamp(1rem,0.97rem + 0.2vw,1.075rem);
+    line-height:1.62; font-size:clamp(1rem,0.97rem + 0.18vw,1.06rem);
     padding-top: calc(var(--banner-h) + var(--nav-h));
   }
-  h1,h2,h3{font-family:var(--serif); font-weight:400; line-height:1.1; letter-spacing:-0.01em; margin:0;}
+  h1,h2,h3,h4{font-family:var(--serif); font-weight:600; line-height:1.02; letter-spacing:-0.012em; margin:0;}
   p{margin:0 0 1rem;}
   a{color:inherit;}
   img{display:block; max-width:100%;}
-  .wrap{max-width:1180px; margin-inline:auto; padding-inline:clamp(1.25rem,4vw,3.5rem);}
-  section{padding-block:clamp(3.5rem,7vw,7rem);}
-  .body-col{max-width:54ch; color:var(--muted);}
-  .eyebrow{font-size:.74rem; text-transform:uppercase; letter-spacing:.2em; color:var(--accent); margin:0 0 1.1rem; display:inline-flex; align-items:center; gap:.75em;}
-  .eyebrow::before{content:""; width:1.9em; height:1px; background:currentColor; opacity:.55; flex:0 0 auto;}
+  .wrap{max-width:var(--maxw); margin-inline:auto; padding-inline:clamp(1.25rem,4vw,3.5rem);}
+  section{padding-block:clamp(3.75rem,7vw,7.25rem);}
+  .lede{color:var(--muted); max-width:56ch;}
 
-  /* ============ DEMO BANNER ============ */
-  .banner{
-    position:fixed; top:0; left:0; right:0; z-index:120; height:var(--banner-h);
-    background:var(--dark); color:#e9e8e0; display:flex; align-items:center; justify-content:center;
-    font-size:clamp(.66rem,.6rem + .25vw,.78rem); letter-spacing:.02em;
-    text-decoration:none; white-space:nowrap; padding-inline:.75rem; overflow:hidden;
-  }
+  /* Eyebrow - used sparingly (max 1 per 3 sections). Sage dash, no middots. */
+  .eyebrow{font-family:var(--sans); font-size:.72rem; text-transform:uppercase; letter-spacing:.24em;
+    color:var(--accent); margin:0 0 1.2rem; display:inline-flex; align-items:center; gap:.85em; font-weight:600;}
+  .eyebrow::before{content:""; width:2.4em; height:1.5px; background:currentColor; opacity:.85; flex:0 0 auto;}
+
+  .sec-head{max-width:48ch; margin-bottom:clamp(2.25rem,5vw,3.5rem);}
+  .sec-head h2{font-size:clamp(2.1rem,1.4rem + 2.6vw,3.4rem); margin-bottom:.85rem;}
+  .sec-head p{color:var(--muted); margin:0;}
+
+  /* ============ BUTTONS (sharp, single accent) ============ */
+  .btn{display:inline-flex; align-items:center; gap:.6ch; min-height:52px; padding:0 1.8rem;
+    background:var(--accent); color:var(--on-dark); text-decoration:none; font-size:.95rem;
+    font-family:var(--sans); font-weight:500; border:1.5px solid var(--accent); border-radius:0;
+    transition:background .2s,border-color .2s,transform .15s,box-shadow .2s; letter-spacing:.01em;}
+  .btn:hover{background:var(--accent-dk); border-color:var(--accent-dk); color:#fff;
+    box-shadow:0 12px 26px -16px rgba(20,24,26,.8); transform:translateY(-1px);}
+  .btn:active{transform:translateY(1px); box-shadow:none;}
+  .btn.light{background:var(--on-dark); color:var(--ink); border-color:var(--on-dark);}
+  .btn.light:hover{background:#fff; border-color:#fff; color:var(--ink);}
+  .btn.ghost{background:transparent; color:var(--on-dark); border-color:rgba(238,240,234,.55);}
+  .btn.ghost:hover{background:rgba(238,240,234,.12); border-color:var(--on-dark); color:#fff; box-shadow:none;}
+  .arr{transition:transform .2s;}
+  .btn:hover .arr{transform:translateX(3px);}
+
+  /* ============ DEMO BANNER (preserved credit) ============ */
+  .banner{position:fixed; top:0; left:0; right:0; z-index:120; height:var(--banner-h);
+    background:var(--dark-2); color:#e9e8e0; display:flex; align-items:center; justify-content:center;
+    font-size:clamp(.66rem,.6rem + .25vw,.76rem); letter-spacing:.02em; font-family:var(--sans);
+    text-decoration:none; white-space:nowrap; padding-inline:.75rem; overflow:hidden;}
   .banner:hover{color:#fff;}
   .banner u{text-decoration:underline; text-underline-offset:2px; margin-left:.35ch;}
 
-  /* ============ NAV ============ */
-  header.nav{
-    position:fixed; top:var(--banner-h); left:0; right:0; z-index:110; height:var(--nav-h);
-    background:rgba(245,244,240,.92); backdrop-filter:saturate(140%) blur(8px);
-    border-bottom:1px solid var(--line);
-  }
+  /* ============ NAV (solid, no blur = no containing-block surprises) ============ */
+  header.nav{position:fixed; top:var(--banner-h); left:0; right:0; z-index:110; height:var(--nav-h);
+    background:rgba(244,242,236,.97); border-bottom:1px solid var(--line);}
   .nav-inner{height:100%; display:flex; align-items:center; justify-content:space-between; gap:1rem;}
-  .brand{display:flex; align-items:center; gap:.7rem; text-decoration:none; color:var(--ink); min-height:44px;}
-  .brand img{height:58px; width:auto;}
-  .brand .bt{display:flex; flex-direction:column; line-height:1.05;}
-  .brand .bt b{font-family:var(--serif); font-weight:400; font-size:1.15rem; letter-spacing:.01em;}
-  .brand .bt span{font-size:.62rem; text-transform:uppercase; letter-spacing:.18em; color:var(--muted);}
-  nav ul{list-style:none; display:flex; align-items:center; gap:clamp(1rem,2.2vw,2.1rem); margin:0; padding:0;}
-  nav a{text-decoration:none; color:var(--ink); font-size:.92rem; display:inline-flex; align-items:center; min-height:44px; border-bottom:1.5px solid transparent; transition:border-color .2s,color .2s;}
+  .brand{display:flex; align-items:center; text-decoration:none; color:var(--ink); min-height:44px;}
+  .brand img{height:50px; width:auto;}
+  nav ul{list-style:none; display:flex; align-items:center; gap:clamp(1rem,2.1vw,2rem); margin:0; padding:0;}
+  nav a{text-decoration:none; color:var(--ink); font-size:.92rem; font-family:var(--sans);
+    display:inline-flex; align-items:center; min-height:44px; border-bottom:1.5px solid transparent;
+    transition:border-color .2s,color .2s;}
   nav a:hover{color:var(--accent); border-color:var(--accent);}
-  nav a.cta{background:var(--accent); color:#f3f2ec; padding:0 1.2rem; min-height:44px; border:1.5px solid var(--accent); transition:background .2s,border-color .2s;}
+  nav a.cta{background:var(--accent); color:var(--on-dark); padding:0 1.2rem; min-height:44px;
+    border:1.5px solid var(--accent);}
   nav a.cta:hover{background:var(--accent-dk); border-color:var(--accent-dk); color:#fff;}
-  .hamb{display:none; background:none; border:0; cursor:pointer; width:44px; height:44px; padding:10px; align-items:center; justify-content:center;}
+  .hamb{display:none; background:none; border:0; cursor:pointer; width:44px; height:44px; padding:10px;
+    align-items:center; justify-content:center;}
   .hamb span{display:block; width:24px; height:2px; background:var(--ink); position:relative; transition:transform .25s,opacity .25s;}
   .hamb span::before,.hamb span::after{content:""; position:absolute; left:0; width:24px; height:2px; background:var(--ink); transition:transform .25s;}
   .hamb span::before{top:-7px;} .hamb span::after{top:7px;}
@@ -81,169 +118,170 @@
   .hamb[aria-expanded="true"] span::before{transform:translateY(7px) rotate(45deg);}
   .hamb[aria-expanded="true"] span::after{transform:translateY(-7px) rotate(-45deg);}
 
-  /* ============ BUTTONS ============ */
-  .btn{display:inline-flex; align-items:center; gap:.6ch; min-height:48px; padding:0 1.6rem; background:var(--accent); color:#f3f2ec; text-decoration:none; font-size:.96rem; border:1.5px solid var(--accent); transition:background .2s,border-color .2s,transform .15s; letter-spacing:.01em;}
-  .btn:hover{background:var(--accent-dk); border-color:var(--accent-dk); color:#fff;}
-  .btn:active{transform:translateY(1px);}
-  .btn.light{background:#f3f2ec; color:var(--ink); border-color:#f3f2ec;}
-  .btn.light:hover{background:#fff; border-color:#fff;}
-  .arr{transition:transform .2s;}
-  .btn:hover .arr{transform:translateX(3px);}
+  /* ============ HERO (full-bleed photo, editorial, deep gradient) ============ */
+  .hero{position:relative; min-height:calc(100dvh - var(--banner-h) - var(--nav-h));
+    display:flex; align-items:flex-end; overflow:hidden; background:var(--dark); color:var(--on-dark);}
+  .hero-bg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center;
+    z-index:0; transform:scale(1.03); animation:kenburns 30s ease-in-out infinite alternate;}
+  @keyframes kenburns{from{transform:scale(1.03) translateY(0);} to{transform:scale(1.13) translateY(-1.5%);}}
+  .hero::after{content:""; position:absolute; inset:0; z-index:1;
+    background:linear-gradient(180deg, rgba(14,17,19,.42) 0%, rgba(14,17,19,.14) 34%, rgba(14,17,19,.92) 100%);}
+  .hero .wrap{position:relative; z-index:2; width:100%; padding-block:clamp(2.75rem,6vw,5rem);}
+  .hero .eyebrow{color:#cfd8d1;}
+  .hero h1{font-size:clamp(2.9rem,2rem + 5vw,5.8rem); font-weight:600; max-width:13ch;
+    color:#fdfdfb; margin-bottom:1.15rem; text-shadow:0 2px 30px rgba(0,0,0,.4);}
+  .hero p.sub{max-width:50ch; font-size:clamp(1.05rem,1rem + .34vw,1.26rem); color:#e9e7de; margin-bottom:2rem;}
+  .hero-actions{display:flex; flex-wrap:wrap; gap:.85rem; align-items:center;}
 
-  /* ============ HERO ============ */
-  .hero{position:relative; min-height:calc(100dvh - var(--banner-h) - var(--nav-h)); display:flex; align-items:flex-end; overflow:hidden; background:var(--dark); color:#f4f3ee;}
-  .hero-bg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center center; z-index:0; transform:scale(1.02); animation:kenburns 26s ease-in-out infinite alternate;}
-  @keyframes kenburns{from{transform:scale(1.02) translateY(0);} to{transform:scale(1.12) translateY(-1.5%);}}
-  .hero::after{content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(20,21,17,.32) 0%, rgba(20,21,17,.16) 38%, rgba(20,21,17,.84) 100%);}
-  .hero .wrap{position:relative; z-index:2; width:100%; padding-block:clamp(2.5rem,6vw,4.5rem) clamp(2.75rem,6vw,4.5rem);}
-  .hero .eyebrow{color:#cfd6cf;}
-  .hero h1{font-size:clamp(2.05rem,1.3rem + 3.5vw,3.3rem); max-width:18ch; color:#fdfdfb; margin-bottom:1.1rem; text-shadow:0 1px 18px rgba(0,0,0,.28);}
-  .hero p.sub{max-width:46ch; font-size:clamp(1.02rem,.98rem + .3vw,1.18rem); color:#e9e7df; margin-bottom:1.9rem;}
-  .hero-actions{display:flex; flex-wrap:wrap; gap:.8rem; align-items:center;}
-  .btn.ghost{background:transparent; color:#f3f2ec; border-color:rgba(243,242,236,.5);}
-  .btn.ghost:hover{background:rgba(243,242,236,.12); border-color:#f3f2ec; color:#fff;}
-  .hero-feats{list-style:none; margin:2.4rem 0 0; padding:1.6rem 0 0; border-top:1px solid rgba(243,242,236,.18); display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; max-width:46rem;}
-  .hero-feats li{display:flex; flex-direction:column; gap:.15rem;}
-  .hero-feats b{font-family:var(--serif); font-weight:400; font-size:1.08rem; color:#fdfdfb;}
-  .hero-feats span{font-size:.82rem; color:#cdcfc6;}
-
-  /* ============ OVER ONS (asymmetric two-column) ============ */
-  .about-grid{display:grid; grid-template-columns:1fr; gap:clamp(2rem,5vw,4rem); align-items:center;}
-  .about-fig{position:relative; overflow:hidden; border:1px solid var(--line);}
-  .about-fig img{width:100%; height:100%; object-fit:cover; aspect-ratio:4/5; transition:transform .9s cubic-bezier(.16,1,.3,1);}
+  /* ============ OVER ONS (asymmetric image-text split + woven trust row) ============ */
+  .about-grid{display:grid; grid-template-columns:1fr; gap:clamp(2rem,5vw,4.5rem); align-items:center;}
+  .about-fig{position:relative; overflow:hidden;}
+  .about-fig img{width:100%; height:100%; object-fit:cover; aspect-ratio:4/5;
+    transition:transform .9s cubic-bezier(.16,1,.3,1);}
   .about-fig:hover img{transform:scale(1.04);}
-  .about-fig figcaption{position:absolute; left:0; bottom:0; background:var(--dark); color:#f1f0e8; font-size:.8rem; padding:.55rem .9rem;}
-  .about-copy h2{font-size:clamp(1.9rem,1.3rem + 2vw,2.8rem); margin-bottom:1.3rem; max-width:16ch;}
-  .vow{margin-top:1.5rem; padding-top:1.3rem; border-top:1px solid var(--line); font-family:var(--serif); font-style:italic; font-size:1.18rem; color:var(--ink); max-width:38ch; line-height:1.4;}
-  .tags{display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.6rem;}
-  .tags span{font-size:.78rem; letter-spacing:.04em; color:var(--accent); border:1px solid var(--accent); padding:.4rem .8rem;}
+  .about-fig figcaption{position:absolute; left:0; bottom:0; background:var(--dark); color:var(--on-dark);
+    font-family:var(--sans); font-size:.8rem; padding:.55rem .95rem; letter-spacing:.02em;}
+  .about-copy h2{font-size:clamp(2.2rem,1.4rem + 2.6vw,3.5rem); margin-bottom:1.3rem; max-width:15ch;}
+  .vow{margin-top:1.7rem; padding-top:1.5rem; border-top:2px solid var(--accent); font-family:var(--serif);
+    font-style:italic; font-size:1.65rem; line-height:1.28; color:var(--ink); max-width:30ch;}
+  /* trust row: four credentials woven under the about split.
+     Mobile = clean stacked list with hairline dividers; desktop = 4-col with vertical rules. */
+  .trust{list-style:none; margin:clamp(2.5rem,5vw,4rem) 0 0; padding:0;
+    border-top:1px solid var(--line-2); display:grid; grid-template-columns:1fr;}
+  .trust li{display:flex; flex-direction:column; gap:.25rem; padding:1.15rem 0; border-bottom:1px solid var(--line);}
+  .trust b{font-family:var(--serif); font-weight:600; font-size:1.42rem; line-height:1.05; color:var(--ink);}
+  .trust span{font-size:.88rem; color:var(--muted);}
 
-  /* ============ SECTION HEADS ============ */
-  .sec-head{max-width:42ch; margin-bottom:clamp(2.25rem,5vw,3.5rem);}
-  .sec-head h2{font-size:clamp(1.9rem,1.3rem + 2vw,2.85rem); margin-bottom:.9rem;}
-  .sec-head p{color:var(--muted); margin:0;}
+  /* ============ DIENSTEN (bento: hero cell + two below, varied backgrounds) ============ */
+  .bento{display:grid; grid-template-columns:1fr; gap:clamp(.9rem,1.6vw,1.15rem);}
+  .svc{position:relative; overflow:hidden; min-height:320px; display:flex; flex-direction:column;
+    justify-content:flex-end; padding:clamp(1.6rem,3vw,2.4rem); color:var(--on-dark); isolation:isolate;}
+  .svc img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2;
+    transition:transform .9s cubic-bezier(.16,1,.3,1);}
+  .svc:hover img{transform:scale(1.05);}
+  .svc::after{content:""; position:absolute; inset:0; z-index:-1;
+    background:linear-gradient(180deg, rgba(14,17,19,.12) 0%, rgba(14,17,19,.52) 56%, rgba(14,17,19,.88) 100%);}
+  .svc h3{font-size:clamp(1.7rem,1.2rem + 1.5vw,2.3rem); font-weight:600; margin-bottom:.6rem; color:#fff;}
+  .svc p{font-family:var(--sans); font-size:.93rem; color:rgba(255,255,255,.92); margin:0; max-width:42ch;}
+  .svc .disc{list-style:none; margin:.95rem 0 0; padding:0; display:flex; flex-wrap:wrap; gap:.4rem;}
+  .svc .disc li{font-family:var(--sans); font-size:.76rem; letter-spacing:.02em; color:#fff;
+    border:1px solid rgba(255,255,255,.5); padding:.3rem .68rem;}
+  .svc .tag{align-self:flex-start; font-family:var(--sans); font-size:.71rem; font-weight:600;
+    letter-spacing:.16em; text-transform:uppercase; color:#fff; border:1px solid rgba(255,255,255,.55);
+    padding:.34rem .7rem; margin-bottom:1rem;}
 
-  /* ============ DIENSTEN (consistente rijen: media links, tekst rechts) ============ */
-  .service{display:grid; grid-template-columns:1fr; gap:clamp(1.5rem,4vw,3rem); align-items:center; padding-top:clamp(2.25rem,5vw,3.75rem); margin-top:clamp(2.25rem,5vw,3.75rem); border-top:1px solid var(--line);}
-  .svc-num{font-family:var(--serif); font-size:.95rem; color:var(--accent); letter-spacing:.04em; margin-bottom:.55rem;}
-  .service h3{font-size:clamp(1.5rem,1.2rem + 1.2vw,2.05rem); margin-bottom:1rem;}
-  .disc{list-style:none; margin:1.4rem 0 0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:0 1.6rem;}
-  .disc li{padding:.55rem 0; border-bottom:1px solid var(--line); font-size:.92rem; color:var(--ink);}
-  .ph-photo{aspect-ratio:16/11; border:1px solid var(--line); overflow:hidden; margin:0; background:#d2d0c5;}
-  .ph-photo img{width:100%; height:100%; object-fit:cover; transition:transform .9s cubic-bezier(.16,1,.3,1);}
-  .ph-photo:hover img{transform:scale(1.04);}
-  /* legionella als rustig, licht detailkaartje (in plaats van groen vlak) */
-  .detail-card{border:1px solid var(--line); background:#fff; padding:clamp(1.6rem,3.5vw,2.4rem); aspect-ratio:16/11; display:flex; flex-direction:column; justify-content:center;}
-  .detail-card h4{font-family:var(--serif); font-weight:400; font-size:1.45rem; margin:0 0 .6rem;}
-  .detail-card .dc-lede{font-size:.92rem; color:var(--muted); margin:0 0 1.1rem; max-width:38ch;}
-  .detail-card dl{margin:0; display:grid; gap:0;}
-  .detail-card dl > div{padding:.85rem 0; border-top:1px solid var(--line);}
-  .detail-card dt{font-weight:600; font-size:.93rem; color:var(--ink);}
-  .detail-card dd{margin:.2rem 0 0; font-size:.9rem; color:var(--muted);}
+  /* ============ WERKBUS (dark full-bleed contrast band) ============ */
+  .van{position:relative; overflow:hidden; background:var(--dark); color:var(--on-dark);}
+  .van-bg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; z-index:0;}
+  .van::after{content:""; position:absolute; inset:0; z-index:1;
+    background:linear-gradient(90deg, rgba(12,14,16,.92) 0%, rgba(12,14,16,.74) 44%, rgba(12,14,16,.28) 100%);}
+  .van .wrap{position:relative; z-index:2;}
+  .van h2{font-size:clamp(2.1rem,1.4rem + 2.4vw,3.2rem); color:#fdfdfb; margin-bottom:1rem; max-width:16ch;}
+  .van p{color:#e2e1d7; max-width:44ch; margin:0;}
 
-  /* ============ OPDRACHTGEVERS (logo carousel) ============ */
-  .clients{background:var(--bg-alt);}
-  .clients .lab{font-size:.78rem; text-transform:uppercase; letter-spacing:.2em; color:var(--accent); margin:0 0 2rem;}
-  .marquee{position:relative; overflow:hidden; padding-block:clamp(1.5rem,3vw,2.25rem); -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent); mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);}
-  .marquee-track{display:flex; width:max-content; animation:marq 40s linear infinite; will-change:transform;}
+  /* ============ OPDRACHTGEVERS (marquee, white chips, sharp) ============ */
+  .clients{background:var(--bg-2);}
+  .clients .sec-head{margin-bottom:clamp(1.6rem,3.5vw,2.4rem);}
+  .marquee{position:relative; overflow:hidden; padding-block:clamp(1.4rem,3vw,2.1rem);
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);}
+  .marquee-track{display:flex; width:max-content; animation:marq 42s linear infinite; will-change:transform;}
   .marquee:hover .marquee-track{animation-play-state:paused;}
   @keyframes marq{from{transform:translateX(0) translateZ(0);} to{transform:translateX(-50%) translateZ(0);}}
-  /* elk logo in een uniforme witte chip: rustig, consistent, kleur komt mooi uit */
-  .slide{flex:0 0 auto; display:flex; align-items:center; justify-content:center; width:clamp(150px,20vw,184px); height:100px; margin-inline:clamp(.5rem,1.4vw,.9rem); background:#fff; border:1px solid var(--line); border-radius:12px; box-shadow:0 1px 2px rgba(31,32,28,.04); transition:box-shadow .25s, transform .25s;}
-  .slide:hover{box-shadow:0 10px 22px -14px rgba(31,32,28,.45); transform:translateY(-3px);}
+  .slide{flex:0 0 auto; display:flex; align-items:center; justify-content:center;
+    width:clamp(150px,20vw,184px); height:104px; margin-inline:clamp(.5rem,1.3vw,.85rem);
+    background:#fff; border:1px solid var(--line); transition:transform .25s, box-shadow .25s;}
+  .slide:hover{transform:translateY(-3px); box-shadow:0 10px 22px -14px rgba(26,28,25,.5);}
   .logo-img{display:block; width:auto; height:auto; max-height:46px; max-width:74%; object-fit:contain;}
-  /* per-logo correctie: bestanden met veel witruimte mogen iets groter */
   .logo-img.eyck{max-height:66px;}
   .logo-img.waalse{max-height:60px;}
-  @media (max-width:860px){.marquee-track{animation-duration:24s;}}
 
-  /* ============ WERKWIJZE (numbered list) ============ */
-  .steps{display:grid; grid-template-columns:1fr; gap:0; margin-top:clamp(1.5rem,3vw,2.5rem); border-top:1px solid var(--line);}
-  .step{display:grid; grid-template-columns:auto 1fr; gap:clamp(1rem,3vw,2.4rem); padding:1.4rem 0; border-bottom:1px solid var(--line); align-items:baseline; transition:padding-left .25s;}
-  .step:hover{padding-left:.6rem;}
-  .step .n{font-family:var(--serif); font-size:1.6rem; color:var(--accent); min-width:2.4ch;}
-  .step h3{font-size:1.18rem; margin-bottom:.25rem;}
-  .step p{margin:0; color:var(--muted); max-width:56ch; font-size:.93rem;}
+  /* ============ WERKWIJZE (numbered editorial steps) ============ */
+  .steps{display:grid; grid-template-columns:1fr; gap:0; margin-top:clamp(1.5rem,3vw,2.5rem);
+    border-top:1px solid var(--line-2);}
+  .step{display:grid; grid-template-columns:auto 1fr; gap:clamp(1.1rem,3vw,2.6rem); padding:1.6rem 0;
+    border-bottom:1px solid var(--line); align-items:baseline; transition:padding-left .25s;}
+  .step:hover{padding-left:.7rem;}
+  .step .n{font-family:var(--serif); font-size:2.5rem; font-weight:600; color:var(--accent); min-width:2.4ch; line-height:1;}
+  .step h3{font-size:1.45rem; font-weight:600; margin-bottom:.2rem;}
+  .step p{margin:0; color:var(--muted); max-width:58ch; font-size:.94rem;}
 
-  /* ============ REVIEWS ============ */
-  .reviews{background:var(--bg-alt); overflow:hidden;}
-  .reviews-head{display:flex; align-items:flex-end; justify-content:space-between; gap:1.5rem; margin-bottom:clamp(1.75rem,4vw,2.75rem);}
-  .reviews-head h2{font-size:clamp(1.9rem,1.3rem + 2vw,2.85rem);}
+  /* ============ REVIEWS (horizontal scroll, tinted band) ============ */
+  .reviews{background:var(--bg-2); overflow:hidden;}
+  .reviews-head{display:flex; align-items:flex-end; justify-content:space-between; gap:1.5rem;
+    margin-bottom:clamp(1.75rem,4vw,2.75rem);}
+  .reviews-head h2{font-size:clamp(2.1rem,1.4rem + 2.4vw,3.2rem);}
   .rev-nav{display:flex; gap:.6rem; flex:0 0 auto;}
-  .rev-arrow{width:48px; height:48px; border:1.5px solid var(--line); background:transparent; color:var(--ink); font-size:1.15rem; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; transition:background .2s,border-color .2s,color .2s;}
-  .rev-arrow:hover{background:var(--accent); border-color:var(--accent); color:#f3f2ec;}
+  .rev-arrow{width:52px; height:52px; border:1.5px solid var(--line-2); background:transparent; color:var(--ink);
+    font-size:1.15rem; cursor:pointer; display:inline-flex; align-items:center; justify-content:center;
+    transition:background .2s,border-color .2s,color .2s;}
+  .rev-arrow:hover{background:var(--accent); border-color:var(--accent); color:var(--on-dark);}
   .stars{display:flex; gap:4px; margin-bottom:1.1rem;}
-  .stars svg{width:18px; height:18px; fill:var(--accent);}
-  .rev-scroller{overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:none; scroll-padding-left:clamp(1.25rem,4vw,3.5rem); -webkit-mask-image:linear-gradient(90deg,#000 88%,transparent); mask-image:linear-gradient(90deg,#000 88%,transparent);}
+  .stars svg{width:17px; height:17px; fill:var(--accent);}
+  .rev-scroller{overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
+    scrollbar-width:none; scroll-padding-left:clamp(1.25rem,4vw,3.5rem);
+    -webkit-mask-image:linear-gradient(90deg,#000 88%,transparent); mask-image:linear-gradient(90deg,#000 88%,transparent);}
   .rev-scroller::-webkit-scrollbar{display:none;}
   .rev-track{display:flex; gap:clamp(1rem,2.5vw,1.5rem); padding-inline:clamp(1.25rem,4vw,3.5rem); padding-block:.25rem 1rem;}
-  .rev-card{flex:0 0 auto; width:clamp(228px,76vw,360px); scroll-snap-align:start; background:var(--bg); border:1px solid var(--line); border-top:3px solid var(--accent); padding:1.7rem 1.5rem; display:flex; flex-direction:column;}
-  .rev-card p{font-family:var(--serif); font-size:1.1rem; line-height:1.4; color:var(--ink); margin:0 0 1.2rem; flex:1 0 auto;}
-  .rev-card cite{font-style:normal; font-size:.88rem; color:var(--muted);}
+  .rev-card{flex:0 0 auto; width:clamp(238px,76vw,366px); scroll-snap-align:start; background:var(--bg);
+    border:1px solid var(--line); border-top:3px solid var(--accent); padding:1.9rem 1.7rem;
+    display:flex; flex-direction:column;}
+  .rev-card p{font-family:var(--serif); font-size:1.38rem; line-height:1.32; color:var(--ink); margin:0 0 1.3rem; flex:1 0 auto;}
+  .rev-card cite{font-style:normal; font-family:var(--sans); font-size:.86rem; color:var(--muted);}
 
-  /* ============ WERKBUS BAND (getinte band met rand, foto links) ============ */
-  .van-band{background:var(--bg-alt); border-block:1px solid var(--line);}
-  .van-band-inner{display:grid; grid-template-columns:1fr; gap:clamp(1.75rem,4vw,3.5rem); align-items:center;}
-  .van-fig{margin:0; border:1px solid var(--line); overflow:hidden;}
-  .van-fig img{width:100%; height:auto; display:block; transition:transform .9s cubic-bezier(.16,1,.3,1);}
-  .van-fig:hover img{transform:scale(1.04);}
-  .van-text h2{font-size:clamp(1.7rem,1.2rem + 1.6vw,2.4rem); margin-bottom:1rem;}
-  .van-text p{color:var(--muted); max-width:42ch; margin:0;}
-
-  /* ============ CONTACT (split: details / satellite map) ============ */
+  /* ============ CONTACT (strong closer: details + satellite map) ============ */
   .contact-grid{display:grid; grid-template-columns:1fr; gap:clamp(2rem,5vw,4rem); align-items:stretch;}
-  .contact-info h2{font-size:clamp(1.9rem,1.3rem + 2vw,2.85rem); margin-bottom:1.1rem; max-width:14ch;}
-  .contact-info .body-col{margin-bottom:1.6rem;}
-  .cinfo{list-style:none; margin:0 0 1.9rem; padding:0; display:grid; gap:1rem;}
-  .cinfo li{display:grid; gap:.15rem; border-bottom:1px solid var(--line); padding-bottom:1rem;}
-  .cinfo .k{font-size:.74rem; text-transform:uppercase; letter-spacing:.16em; color:var(--accent);}
-  .cinfo .v{font-size:1.08rem;}
+  .contact-info h2{font-size:clamp(2.3rem,1.5rem + 2.8vw,3.8rem); margin-bottom:1.1rem; max-width:13ch;}
+  .contact-info .lede{margin-bottom:1.8rem;}
+  .cinfo{list-style:none; margin:0 0 2rem; padding:0; display:grid; gap:1rem;}
+  .cinfo li{display:grid; gap:.18rem; border-bottom:1px solid var(--line); padding-bottom:1rem;}
+  .cinfo .k{font-family:var(--sans); font-size:.72rem; text-transform:uppercase; letter-spacing:.18em; color:var(--accent); font-weight:600;}
+  .cinfo .v{font-size:1.1rem;}
   .cinfo a{color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line); transition:border-color .2s;}
   .cinfo a:hover{border-color:var(--accent);}
-  .map-wrap{position:relative; min-height:20rem; height:100%; border:1px solid var(--line); overflow:hidden; background:#d2d0c5;}
+  .map-wrap{position:relative; min-height:23rem; height:100%; border:1px solid var(--line-2); overflow:hidden; background:#d0cec3;}
   .map-wrap iframe{position:absolute; inset:0; width:100%; height:100%; border:0; filter:grayscale(.12) contrast(1.02);}
-  .map-pin{position:absolute; left:0; bottom:0; z-index:2; background:var(--dark); color:#f1f0e8; font-size:.82rem; padding:.55rem .9rem;}
-
-  /* ============ CTA BAND ============ */
-  .cta-band{background:var(--accent); color:#f3f2ec; position:relative; overflow:hidden;}
-  .cta-band::after{content:""; position:absolute; inset:0; background:radial-gradient(120% 140% at 100% 0%, rgba(255,255,255,.10), transparent 55%); pointer-events:none;}
-  .cta-inner{position:relative; z-index:1; display:grid; grid-template-columns:1fr; gap:1.8rem; align-items:center;}
-  .cta-copy .eyebrow{color:#d6ddd6;}
-  .cta-copy h2{font-size:clamp(1.8rem,1.3rem + 1.8vw,2.6rem); color:#fdfdfb; margin-bottom:.7rem; max-width:20ch;}
-  .cta-copy p{color:#e4e8e2; margin:0; max-width:44ch;}
-  .cta-act{display:flex; flex-wrap:wrap; gap:.8rem;}
+  .map-pin{position:absolute; left:0; bottom:0; z-index:2; background:var(--dark); color:var(--on-dark);
+    font-family:var(--sans); font-size:.82rem; padding:.55rem .95rem;}
 
   /* ============ FOOTER ============ */
-  footer{background:var(--dark); color:var(--dark-mut); padding-block:clamp(2.75rem,6vw,4rem) 2rem;}
-  footer .f-top{display:grid; grid-template-columns:1fr; gap:1.6rem; padding-bottom:2rem; border-bottom:1px solid rgba(255,255,255,.12);}
-  footer .brand .bt b{color:#f1f0e8;}
-  footer .brand .bt span{color:var(--dark-mut);}
-  footer .brand img{opacity:1; background:#fff; padding:6px 10px;}
-  footer address{font-style:normal; font-size:.92rem; line-height:1.7;}
+  footer{background:var(--dark); color:var(--on-dark-mut); padding-block:clamp(2.75rem,6vw,4rem) 2rem; font-family:var(--sans);}
+  footer .f-top{display:grid; grid-template-columns:1fr; gap:1.7rem; padding-bottom:2rem; border-bottom:1px solid rgba(255,255,255,.12);}
+  footer .brand img{height:64px; background:#fff; padding:8px 12px;}
+  footer address{font-style:normal; font-size:.92rem; line-height:1.75;}
   footer a{color:#e3e2d9; text-decoration:none; border-bottom:1px solid rgba(255,255,255,.18);}
   footer a:hover{border-color:#fff; color:#fff;}
   footer .f-bot{display:flex; flex-wrap:wrap; gap:.4rem 1.5rem; justify-content:space-between; padding-top:1.6rem; font-size:.8rem;}
 
   /* ============ SCROLL REVEAL ============ */
-  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s cubic-bezier(.16,1,.3,1);}
+  .reveal{opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s cubic-bezier(.16,1,.3,1);}
   .reveal.is-visible{opacity:1; transform:none;}
+  .reveal[data-d="1"]{transition-delay:.08s;}
+  .reveal[data-d="2"]{transition-delay:.16s;}
+  .reveal[data-d="3"]{transition-delay:.24s;}
 
   /* ============ RESPONSIVE ============ */
   @media (max-width:860px){
-    nav ul{position:fixed; top:var(--nav-h); left:0; right:0; z-index:115; flex-direction:column; align-items:stretch; gap:0; background:var(--bg); border-bottom:1px solid var(--line); padding:.5rem clamp(1.25rem,4vw,3.5rem) 1.25rem; transform:translateY(-130%); transition:transform .3s ease; box-shadow:0 16px 24px -18px rgba(0,0,0,.4);}
+    nav ul{position:fixed; top:calc(var(--banner-h) + var(--nav-h)); left:0; right:0; z-index:115;
+      flex-direction:column; align-items:stretch; gap:0; background:var(--bg); border-bottom:1px solid var(--line);
+      padding:.5rem clamp(1.25rem,4vw,3.5rem) 1.25rem; transform:translateY(-130%); transition:transform .3s ease;
+      box-shadow:0 16px 24px -18px rgba(0,0,0,.4);}
     nav ul.open{transform:translateY(0);}
     nav li{border-bottom:1px solid var(--line);}
     nav a{width:100%; min-height:52px; border-bottom:0;}
     nav a.cta{justify-content:center; margin-top:.85rem; min-height:52px;}
     .hamb{display:inline-flex;}
+    .brand img{height:38px;}
   }
   @media (min-width:760px){
+    .trust{grid-template-columns:repeat(4,1fr); padding-top:clamp(1.8rem,3.2vw,2.5rem); gap:0;}
+    .trust li{border-bottom:0; border-left:1px solid var(--line); padding:0 clamp(1rem,2vw,1.6rem);}
+    .trust li:first-child{border-left:0; padding-left:0;}
     .about-grid{grid-template-columns:0.82fr 1.18fr;}
-    .van-band-inner{grid-template-columns:1.1fr .9fr;}
-    .service{grid-template-columns:1fr 1fr; gap:clamp(2rem,4vw,3.5rem);}
-    .contact-grid{grid-template-columns:1fr 1fr;}
-    .cta-inner{grid-template-columns:1.3fr auto; gap:2.5rem;}
-    .cta-act{flex-direction:column; align-items:stretch;}
+    .bento{grid-template-columns:1.12fr .88fr; grid-template-rows:repeat(2,minmax(258px,1fr));}
+    .svc.lead{grid-column:1; grid-row:1 / 3;}
+    .van .wrap{min-height:48vh; display:flex; flex-direction:column; justify-content:center; padding-block:clamp(3rem,6vw,5.5rem);}
+    .contact-grid{grid-template-columns:1.05fr .95fr;}
     footer .f-top{grid-template-columns:1.3fr 1fr 1fr;}
   }
   @media (prefers-reduced-motion:reduce){
@@ -256,14 +294,14 @@
 </head>
 <body>
 
-<!-- DEMO BANNER -->
+<!-- DEMO BANNER (preserved agency credit) -->
 <a class="banner" href="https://brand-on.org" target="_blank" rel="noopener">Demovoorbeeld gemaakt door Brand-On,<u>brand-on.org</u></a>
 
 <!-- NAV -->
 <header class="nav">
   <div class="wrap nav-inner">
     <a class="brand" href="#top" aria-label="Brinkman, naar boven">
-      <img src="logo_transparant.png" alt="Brinkman logo">
+      <img src="logo_transparant.png" alt="Brinkman Installatie en Loodgietersbedrijf logo">
     </a>
     <nav>
       <button class="hamb" aria-label="Menu openen" aria-expanded="false" aria-controls="menu"><span></span></button>
@@ -284,113 +322,88 @@
   <section class="hero" aria-label="Introductie">
     <img class="hero-bg" src="hero%20banner.avif" alt="">
     <div class="wrap">
-      <p class="eyebrow">Brinkman Installatie &amp; Loodgietersbedrijf</p>
-      <h1>Installatie, loodgieten en restauratie in Purmerend en omgeving.</h1>
-      <p class="sub">Van utiliteit tot monumentaal lood, zink en koper. Strak gepland, netjes opgeleverd.</p>
+      <p class="eyebrow">Loodgieter en installateur in Purmerend e.o.</p>
+      <h1>Vakwerk dat blijft staan.</h1>
+      <p class="sub">Installatie, loodgieten en restauratie in Purmerend en omgeving. Van utiliteit tot monumentaal lood, zink en koper.</p>
       <div class="hero-actions">
         <a class="btn light" href="#contact">Neem contact op <span class="arr">&rarr;</span></a>
         <a class="btn ghost" href="tel:+31207601550">020 760 1550</a>
       </div>
-      <ul class="hero-feats">
-        <li><b>Eigen monteurs</b><span>Vaste, vakkundige mensen</span></li>
-        <li><b>RAL gecertificeerd</b><span>Aantoonbaar legionellabeheer</span></li>
-        <li><b>Korte aanrijtijden</b><span>Snel in Purmerend e.o.</span></li>
-      </ul>
     </div>
   </section>
 
   <!-- OVER ONS -->
   <section id="over">
-    <div class="wrap about-grid">
-      <figure class="about-fig reveal">
-        <img src="foto_van_jort.png" alt="Jort Brinkman, contactpersoon bij Brinkman Installatie en Loodgietersbedrijf">
-        <figcaption>Jort Brinkman</figcaption>
-      </figure>
-      <div class="about-copy reveal">
-        <h2>Klein bedrijf, groot vakmanschap.</h2>
-        <p class="body-col">Al jaren actief in Noord-Holland, met korte lijnen en een vaste contactpersoon. U spreekt de mensen die het werk ook echt uitvoeren, van begroting tot oplevering.</p>
-        <p class="vow">Samenwerking op vertrouwen, opgebouwd op werk dat blijft staan.</p>
-        <div class="tags">
-          <span>Platte organisatie</span>
-          <span>RAL gecertificeerd</span>
-          <span>Monumentwaardig werk</span>
+    <div class="wrap">
+      <div class="about-grid">
+        <figure class="about-fig reveal">
+          <img src="foto_van_jort.png" alt="Jort Brinkman, contactpersoon bij Brinkman Installatie en Loodgietersbedrijf">
+          <figcaption>Jort Brinkman</figcaption>
+        </figure>
+        <div class="about-copy reveal" data-d="1">
+          <h2>Klein bedrijf, groot vakmanschap.</h2>
+          <p class="lede">Al jaren actief in Noord-Holland, met korte lijnen en een vaste contactpersoon. U spreekt de mensen die het werk ook echt uitvoeren, van begroting tot oplevering.</p>
+          <p class="vow">Samenwerking op vertrouwen, opgebouwd op werk dat blijft staan.</p>
         </div>
       </div>
+      <ul class="trust reveal" data-d="1">
+        <li><b>Eigen mensen</b><span>Vaste monteurs en eigen bus</span></li>
+        <li><b>RAL-gecertificeerd</b><span>Legionellabeheer met logboek</span></li>
+        <li><b>Snel ter plaatse</b><span>Korte aanrijtijden in de regio</span></li>
+        <li><b>Monumentwaardig</b><span>Respect voor het origineel</span></li>
+      </ul>
     </div>
   </section>
 
-  <!-- WERKBUS BAND -->
-  <section class="van-band" aria-label="Onderweg in de regio">
-    <div class="wrap van-band-inner">
-      <figure class="van-fig reveal">
-        <img src="werkbus_in_dorp.png" alt="Werkbus van Brinkman in het dorp">
-      </figure>
-      <div class="van-text reveal">
-        <h2>Altijd dichtbij.</h2>
-        <p>Eigen mensen en een eigen bus, met korte aanrijtijden in Purmerend en omgeving. Of het nu om gepland onderhoud of een spoedklus gaat, we staan snel voor u klaar.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- DIENSTEN -->
+  <!-- DIENSTEN (bento) -->
   <section id="diensten">
     <div class="wrap">
       <div class="sec-head reveal">
-        <h2>Drie soorten werk, onder één dak.</h2>
+        <p class="eyebrow">Diensten</p>
+        <h2>Drie soorten werk, onder een dak.</h2>
         <p>Installatie in de utiliteit, onderhoud met legionellabeheer, en monumentale restauratie.</p>
       </div>
-
-      <div class="service reveal" id="s-utiliteit">
-        <figure class="ph-photo"><img src="installatiewerk.avif" alt="Installatiewerk door Brinkman in de utiliteit"></figure>
-        <div class="service-body">
-          <p class="svc-num">01</p>
+      <div class="bento reveal" data-d="1">
+        <article class="svc lead" id="s-utiliteit">
+          <img src="installatiewerk.avif" alt="Installatiewerk door Brinkman in de utiliteit">
           <h3>Utiliteit</h3>
-          <p class="body-col">Complete installaties voor kantoren, zorg en bedrijfspanden. Van ontwerp tot oplevering in een doorlopende lijn.</p>
+          <p>Complete installaties voor kantoren, zorg en bedrijfspanden. Van ontwerp tot oplevering in een doorlopende lijn.</p>
           <ul class="disc">
-            <li>Water</li>
-            <li>Gas</li>
-            <li>Sanitair</li>
-            <li>Riolering</li>
-            <li>Hemelwater</li>
-            <li>Pompinstallaties</li>
-            <li>Brandblusmiddelen</li>
+            <li>Water</li><li>Gas</li><li>Sanitair</li><li>Riolering</li>
+            <li>Hemelwater</li><li>Pompinstallaties</li><li>Brandblusmiddelen</li>
           </ul>
-        </div>
-      </div>
-
-      <div class="service reveal" id="s-onderhoud">
-        <div class="detail-card">
-          <h4>Legionellabeheer</h4>
-          <p class="dc-lede">Beheersing op basis van een vast plan, vastgelegd en aantoonbaar.</p>
-          <dl>
-            <div><dt>RAL gecertificeerd</dt><dd>Monstername en beheersing door erkende uitvoering.</dd></div>
-            <div><dt>Beheersplan</dt><dd>Per locatie een actueel plan met logboek en rapportage.</dd></div>
-          </dl>
-        </div>
-        <div class="service-body">
-          <p class="svc-num">02</p>
-          <h3>Onderhoud en legionellabeheer</h3>
-          <p class="body-col">Klein en groot onderhoud, gepland of op afroep. We kennen de panden waar we werken en zijn storingen liever voor dan dat we ze achteraf oplossen.</p>
-        </div>
-      </div>
-
-      <div class="service reveal" id="s-restauratie">
-        <figure class="ph-photo"><img src="zinkkoper.png" alt="Restauratie van lood, zink en koper aan een monument"></figure>
-        <div class="service-body">
-          <p class="svc-num">03</p>
+        </article>
+        <article class="svc" id="s-restauratie">
+          <img src="zinkkoper.png" alt="Restauratie van lood, zink en koper aan een monument">
           <h3>Restauratie</h3>
-          <p class="body-col">Monumentaal lood-, zink- en koperwerk aan kerktorens, landhuizen en monumenten. Met respect voor het origineel en een planning die u van nieuwbouw verwacht.</p>
-        </div>
+          <p>Monumentaal lood-, zink- en koperwerk aan kerktorens, landhuizen en monumenten, met respect voor het origineel.</p>
+        </article>
+        <article class="svc" id="s-onderhoud">
+          <img src="onderhoud.png" alt="Onderhoud en legionellabeheer door Brinkman">
+          <span class="tag">RAL-gecertificeerd</span>
+          <h3>Onderhoud en legionellabeheer</h3>
+          <p>Klein en groot onderhoud, gepland of op afroep. Legionellabeheer met beheersplan, logboek en heldere rapportage.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- OPDRACHTGEVERS (logo carousel) -->
+  <!-- WERKBUS (dark contrast band) -->
+  <section class="van" aria-label="Onderweg in de regio">
+    <img class="van-bg" src="werkbus_in_dorp.png" alt="">
+    <div class="wrap">
+      <h2>Altijd dichtbij.</h2>
+      <p>Eigen mensen en een eigen bus, met korte aanrijtijden in Purmerend en omgeving. Of het nu om gepland onderhoud of een spoedklus gaat, we staan snel voor u klaar.</p>
+    </div>
+  </section>
+
+  <!-- OPDRACHTGEVERS (marquee) -->
   <section id="opdrachtgevers" class="clients">
     <div class="wrap reveal">
-      <p class="lab">Een selectie van opdrachtgevers</p>
+      <div class="sec-head">
+        <h2>Een selectie van opdrachtgevers.</h2>
+      </div>
     </div>
-    <!-- Echte merklogo's waar aangeleverd; de twee kerken als gestileerd embleem (geen logobestand beschikbaar). Set wordt in JS verdubbeld voor naadloze loop. -->
     <div class="marquee" aria-label="Opdrachtgevers">
       <div class="marquee-track" id="logoTrack">
         <div class="slide"><img class="logo-img eyck" src="eyckenstein.png" alt="Landgoed Eyckenstein"></div>
@@ -410,7 +423,7 @@
         <h2>Hoe we werken.</h2>
         <p>Geen verrassingen, van eerste begroting tot oplevering.</p>
       </div>
-      <div class="steps reveal">
+      <div class="steps reveal" data-d="1">
         <div class="step"><span class="n">01</span><div><h3>Platte organisatie</h3><p>Korte lijnen en een vaste contactpersoon.</p></div></div>
         <div class="step"><span class="n">02</span><div><h3>Strakke planning</h3><p>Een realistische planning die we nakomen.</p></div></div>
         <div class="step"><span class="n">03</span><div><h3>Nauwsluitende begroting</h3><p>Vooraf helder wat het kost, zonder verrassingen achteraf.</p></div></div>
@@ -435,7 +448,7 @@
       <div class="rev-track">
         <figure class="rev-card">
           <div class="stars" aria-label="5 van 5 sterren"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.9 8.6 22 9.2 16.5 13.9 18.2 21 12 17.3 5.8 21 7.5 13.9 2 9.2 9.1 8.6Z"/></svg></div>
-          <p>&ldquo;Het lood- en zinkwerk aan onze kerktoren vakkundig en met respect voor het monument hersteld. Strakke planning, netjes opgeleverd.&rdquo;</p>
+          <p>&ldquo;Het lood- en zinkwerk aan onze kerktoren vakkundig en met respect voor het monument hersteld. Strak gepland, netjes opgeleverd.&rdquo;</p>
           <cite>Beheerder, Oude Jeroenskerk</cite>
         </figure>
         <figure class="rev-card">
@@ -467,12 +480,13 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- CONTACT (strong closer) -->
   <section id="contact">
     <div class="wrap contact-grid">
       <div class="contact-info reveal">
+        <p class="eyebrow">Contact</p>
         <h2>Even bellen of mailen?</h2>
-        <p class="body-col">Bel of mail Jort. We kijken mee, begroten nauwsluitend en plannen het werk in zonder gedoe.</p>
+        <p class="lede">Bel of mail Jort. We kijken mee, begroten nauwsluitend en plannen het werk in zonder gedoe.</p>
         <ul class="cinfo">
           <li><span class="k">Telefoon</span><span class="v"><a href="tel:+31207601550">020 760 1550</a></span></li>
           <li><span class="k">E-mail</span><span class="v"><a href="mailto:info@brinkmanloodgieters.nl">info@brinkmanloodgieters.nl</a></span></li>
@@ -481,25 +495,10 @@
         </ul>
         <a class="btn" href="tel:+31207601550">Bel 020 760 1550</a>
       </div>
-      <div class="map-wrap reveal">
+      <div class="map-wrap reveal" data-d="1">
         <iframe title="Satellietkaart Purmerland 96, 1451 MJ Purmerland" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen
           src="https://maps.google.com/maps?q=Purmerland%2096%2C%201451%20MJ%20Purmerland&t=k&z=16&output=embed"></iframe>
         <span class="map-pin">Purmerland 96, 1451 MJ Purmerland</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA BAND -->
-  <section class="cta-band" aria-label="Contact oproep">
-    <div class="wrap cta-inner">
-      <div class="cta-copy">
-        <p class="eyebrow">Aan de slag</p>
-        <h2>Een klus, een vraag of gewoon even sparren?</h2>
-        <p>Vertel kort wat er speelt. U krijgt snel een eerlijk antwoord en een heldere prijs.</p>
-      </div>
-      <div class="cta-act">
-        <a class="btn light" href="tel:+31207601550">Bel 020 760 1550</a>
-        <a class="btn ghost" href="mailto:info@brinkmanloodgieters.nl">Stuur een mail</a>
       </div>
     </div>
   </section>
@@ -510,8 +509,8 @@
 <footer>
   <div class="wrap">
     <div class="f-top">
-      <a class="brand" href="#top">
-        <img src="logo_transparant.png" alt="Brinkman logo">
+      <a class="brand" href="#top" aria-label="Brinkman, naar boven">
+        <img src="logo_transparant.png" alt="Brinkman Installatie en Loodgietersbedrijf logo">
       </a>
       <address>
         Purmerland 96<br>
@@ -554,21 +553,17 @@
     }
   })();
 
-  /* Duplicate logo set for a seamless marquee loop using cloneNode (no innerHTML
-     replacement = no glitch). Always add in pairs so the total stays even and
-     translateX(-50%) always lands on an identical copy. */
+  /* Seamless marquee loop via cloneNode (append-only, no innerHTML glitch).
+     Add in pairs so translateX(-50%) always lands on an identical copy. */
   (function(){
     var track = document.getElementById('logoTrack');
     if(!track) return;
     if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     var slides = Array.from(track.children);
-    function addSet(){
-      slides.forEach(function(s){ track.appendChild(s.cloneNode(true)); });
-    }
-    addSet(); // minimum: 2 sets (original + 1 clone)
+    function addSet(){ slides.forEach(function(s){ track.appendChild(s.cloneNode(true)); }); }
+    addSet();
     while(track.scrollWidth < window.innerWidth * 2.5 && track.children.length < slides.length * 10){
-      addSet();
-      addSet(); // always in pairs to keep total even
+      addSet(); addSet();
     }
   })();
 
@@ -576,8 +571,7 @@
   (function(){
     var scroller = document.getElementById('revScroller');
     if(!scroller) return;
-    var arrows = document.querySelectorAll('.rev-arrow');
-    arrows.forEach(function(btn){
+    document.querySelectorAll('.rev-arrow').forEach(function(btn){
       btn.addEventListener('click', function(){
         var card = scroller.querySelector('.rev-card');
         var step = card ? card.getBoundingClientRect().width + 16 : 320;
