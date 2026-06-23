@@ -137,7 +137,7 @@
   .clients{background:var(--bg-alt);}
   .clients .lab{font-size:.78rem; text-transform:uppercase; letter-spacing:.2em; color:var(--accent); margin:0 0 2rem;}
   .marquee{position:relative; overflow:hidden; border-block:1px solid var(--line); -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
-  .marquee-track{display:flex; width:max-content; animation:marq 40s linear infinite;}
+  .marquee-track{display:flex; width:max-content; animation:marq 40s linear infinite; will-change:transform; -webkit-transform:translateZ(0); transform:translateZ(0);}
   @keyframes marq{from{transform:translateX(0);} to{transform:translateX(-50%);}}
   .slide{flex:0 0 auto; display:flex; align-items:center; justify-content:center; height:92px; margin-inline:clamp(1.5rem,3.5vw,3rem);}
   /* zelfde hoogte voor elk logo; de breedte volgt automatisch de aspect ratio */
@@ -145,8 +145,8 @@
   .logo{color:var(--muted);}
   .logo:hover{color:var(--ink); transform:translateY(-2px);}
   .logo text{font-family:var(--sans);}
-  .logo-img{object-fit:contain; filter:grayscale(1); opacity:.62;}
-  .logo-img:hover{filter:none; opacity:1; transform:translateY(-2px);}
+  .logo-img{object-fit:contain; opacity:.85;}
+  .logo-img:hover{opacity:1; transform:translateY(-2px);}
   /* eyckenstein heeft veel witruimte in het bestand: individuele correctie */
   .logo-img.eyck{height:74px;}
 
