@@ -137,8 +137,8 @@
   .clients{background:var(--bg-alt);}
   .clients .lab{font-size:.78rem; text-transform:uppercase; letter-spacing:.2em; color:var(--accent); margin:0 0 2rem;}
   .marquee{position:relative; overflow:hidden; border-block:1px solid var(--line); -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
-  .marquee-track{display:flex; width:max-content; animation:marq 40s linear infinite; will-change:transform; -webkit-transform:translateZ(0); transform:translateZ(0);}
-  @keyframes marq{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+  .marquee-track{display:flex; width:max-content; animation:marq 40s linear infinite; will-change:transform;}
+  @keyframes marq{from{transform:translateX(0) translateZ(0);} to{transform:translateX(-50%) translateZ(0);}}
   .slide{flex:0 0 auto; display:flex; align-items:center; justify-content:center; height:92px; margin-inline:clamp(1.5rem,3.5vw,3rem);}
   /* zelfde hoogte voor elk logo; de breedte volgt automatisch de aspect ratio */
   .logo,.logo-img{display:block; width:auto; height:34px; max-width:none; transition:filter .25s, color .25s, opacity .25s, transform .25s;}
@@ -521,19 +521,21 @@
     }
   })();
 
-  /* Duplicate logo set for a seamless marquee loop.
-     Doubling keeps an even number of identical sets, so translateX(-50%)
-     always lands exactly on a copy (no jump). Keep doubling until the track
-     is wide enough to cover wide screens without revealing a gap. */
+  /* Duplicate logo set for a seamless marquee loop using cloneNode (no innerHTML
+     replacement = no glitch). Always add in pairs so the total stays even and
+     translateX(-50%) always lands on an identical copy. */
   (function(){
     var track = document.getElementById('logoTrack');
     if(!track) return;
     if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    track.innerHTML += track.innerHTML;
-    var guard = 0;
-    while(track.scrollWidth < window.innerWidth * 2.2 && guard < 4){
-      track.innerHTML += track.innerHTML;
-      guard++;
+    var slides = Array.from(track.children);
+    function addSet(){
+      slides.forEach(function(s){ track.appendChild(s.cloneNode(true)); });
+    }
+    addSet(); // minimum: 2 sets (original + 1 clone)
+    while(track.scrollWidth < window.innerWidth * 2.5 && track.children.length < slides.length * 10){
+      addSet();
+      addSet(); // always in pairs to keep total even
     }
   })();
 
